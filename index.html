@@ -23,7 +23,6 @@
             object-fit: contain; 
         }
     </style>
-    <script src="libv86.js"></script>
 </head>
 <body>
     <div id="screen_container">
@@ -31,11 +30,12 @@
         <canvas style="display: none"></canvas>
     </div>
 
-    <script>
-        "use strict";
+    <script type="module">
+        import { V86 } from "./libv86.mjs";
+
         window.onload = function() {
-            var emulator = new V86Starter({
-                wasm_path: "v86.wasm",
+            var emulator = new V86({
+                wasm_path: "./v86.wasm",
                 memory_size: 128 * 1024 * 1024,
                 vga_memory_size: 8 * 1024 * 1024,
                 screen_container: document.getElementById("screen_container"),
